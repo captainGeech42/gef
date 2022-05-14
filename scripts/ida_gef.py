@@ -27,7 +27,12 @@ Ref:
 
 from __future__ import print_function
 
-from SimpleXMLRPCServer import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer, list_public_methods
+try:
+    # Python 2
+    from SimpleXMLRPCServer import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer, list_public_methods
+except ImportError:
+    # Python 3
+    from xmlrpc.server import SimpleXMLRPCRequestHandler, SimpleXMLRPCServer, list_public_methods
 
 import inspect
 import string
